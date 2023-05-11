@@ -19,11 +19,11 @@ python manage.py runserver
 ### Registration
 
 ```bash
-POST http://127.0.0.1:8000/api/register/
+POST http://127.0.0.1:8000/api/v1/register/
 ```
 
 ### Login
 
 ```bash
-POST http://127.0.0.1:8000/api/login/
+POST http://127.0.0.1:8000/api/v1/login/
 ```
