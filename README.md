@@ -77,6 +77,14 @@ GET http://127.0.0.1:8000/api/sales/v1/sales/1
 ```bash
 GET http://127.0.0.1:8000/api/sales/v1/report/
 ```
+### Generate PDF file will be found inside project folder
+```
+salesproject/report.pdf
+```
+### Click on [PDF Report](https://drive.google.com/file/d/1oniz4xmhxU-8Ijh8thFMFVbYO1Vt8oWW/view?usp=sharing) to see the report
+
+----------------------------------------------------------------------------------------------------------------------------
+
 
 ### Last Two question's answer pie chart and line chart attach below using the Given data
 ![sales_performance_pie_chart.png](salesproject%2Fsales_performance_pie_chart.png)
