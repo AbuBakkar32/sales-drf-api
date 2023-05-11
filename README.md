@@ -1,13 +1,19 @@
-# sales-drf-api
+# ===> SALES-DRF-API PROJECT <===
 
 ## Installation
 #### Before installation make sure you have installed python 3.9 or above version in your system
 
+### Clone the project and run the following command in cmd
+
+```bash
+git clone https://github.com/AbuBakkar32/sales-drf-api.git
+```
+#### After that go to the project directory and run the following command in cmd
 ```bash
 pip install -r requirements.txt
 ```
 
-## Usage
+### Usage the following command in cmd to run the project
 
 ```bash
 python manage.py makemigrations
@@ -15,15 +21,17 @@ python manage.py migrate
 python manage.py runserver
 ```
 
+----------------------------------------------------------------------------------------------------------------------------
+
 ## API Endpoints for Registration and Login
 
-### Registration
+#### Registration
 
 ```bash
 POST http://127.0.0.1:8000/api/auth/v1/register/
 ```
 
-### Login
+#### Login
 
 ```bash
 POST http://127.0.0.1:8000/api/auth/v1/login/
