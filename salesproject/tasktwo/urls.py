@@ -1,6 +1,7 @@
 from django.urls import path, include
-# from .views import
+from .views import SalesListCreateView, SalesRetrieveUpdateDestroyView
 
 urlpatterns = [
-    # path('register/', RegistrationAPIView.as_view(), name="user-register"),
+    path('sales/', SalesListCreateView.as_view(), name='sales-list-create'),
+    path('sales/<int:pk>/', SalesRetrieveUpdateDestroyView.as_view(), name='sales-retrieve-update-destroy'),
 ]

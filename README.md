@@ -19,13 +19,13 @@ python manage.py runserver
 ### Registration
 
 ```bash
-POST http://127.0.0.1:8000/api/v1/register/
+POST http://127.0.0.1:8000/api/auth/v1/register/
 ```
 
 ### Login
 
 ```bash
-POST http://127.0.0.1:8000/api/v1/login/
+POST http://127.0.0.1:8000/api/auth/v1/login/
 ```
 
 ## Test Case for Registration and Login
@@ -50,3 +50,24 @@ sqlite3 db.sqlite3
 ### Now check your database. You will see the data is imported successfully.
 
 ----------------------------------------------------------------------------------------------------------------------------
+## API Endpoints for "data insertion and manipulation" of sales model for app tasktwo
+
+### Insertion and get list of data
+
+```bash
+POST http://127.0.0.1:8000/api/sales/v1/sales
+```
+
+### Update, Delete and get single data
+
+```bash
+PUT http://127.0.0.1:8000/api/sales/v1/sales/1
+```
+
+```bash
+DELETE http://127.0.0.1:8000/api/sales/v1/sales/1
+```
+
+```bash
+GET http://127.0.0.1:8000/api/sales/v1/sales/1
+```

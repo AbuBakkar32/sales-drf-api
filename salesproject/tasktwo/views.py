@@ -5,11 +5,11 @@ from .serializers import SalesSerializer
 
 
 # Create your views here.
-class TaskTwoListCreateView(generics.ListCreateAPIView):
+class SalesListCreateView(generics.ListCreateAPIView):
     queryset = SalesModel.objects.all()
     serializer_class = SalesSerializer
 
 
-class TaskTwoRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
+class SalesRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
     queryset = SalesModel.objects.all()
     serializer_class = SalesSerializer
