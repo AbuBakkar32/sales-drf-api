@@ -1,3 +1,5 @@
+import csv
+
 from django.http import HttpResponse
 from django.shortcuts import render
 from rest_framework import generics
@@ -29,7 +31,7 @@ Create an API that will generate a PDF report from the given dataset. The report
 from io import BytesIO
 from reportlab.lib import colors
 from reportlab.lib.pagesizes import letter
-from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Table, TableStyle
+from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Table, TableStyle, Image
 from reportlab.lib.styles import getSampleStyleSheet
 from django.db.models import Count, Sum, Max
 from .models import SalesModel
@@ -126,16 +128,21 @@ def generate_PDF_report(request):
     region_labels = [item['region'] for item in sales_per_region]
     region_sales = [item['total_sales'] for item in sales_per_region]
 
+    plt.figure(figsize=(6, 6))
     plt.pie(region_sales, labels=region_labels, autopct='%1.1f%%')
     plt.title('Sales Performance per Region')
     plt.axis('equal')
-    plt.savefig('sales_performance_pie_chart.png')
+    pie_chart_buffer = BytesIO()
+    plt.savefig(pie_chart_buffer, format='png')
     plt.close()
+
+    pie_chart_image = Image(pie_chart_buffer)
+    pie_chart_image.drawHeight = 300
+    pie_chart_image.drawWidth = 400
 
     elements.append(Paragraph('<b>6. Region basis sales performance pie chart:</b>', styles['Heading2']))
     elements.append(Spacer(1, 10))
-    elements.append(
-        Paragraph('<img src="sales_performance_pie_chart.png" width="400" height="300"/>', styles['BodyText']))
+    elements.append(pie_chart_image)
     elements.append(Spacer(1, 20))
 
     # 7. Sales performance line chart over the years
@@ -144,17 +151,22 @@ def generate_PDF_report(request):
     years = [item['order_date__year'] for item in sales_per_year]
     total_sales = [item['total_sales'] for item in sales_per_year]
 
+    plt.figure(figsize=(6, 4))
     plt.plot(years, total_sales, marker='o')
     plt.xlabel('Year')
     plt.ylabel('Total Sales')
     plt.title('Sales Performance over the Years')
-    plt.savefig('sales_performance_line_chart.png')
+    line_chart_buffer = BytesIO()
+    plt.savefig(line_chart_buffer, format='png')
     plt.close()
+
+    line_chart_image = Image(line_chart_buffer)
+    line_chart_image.drawHeight = 300
+    line_chart_image.drawWidth = 400
 
     elements.append(Paragraph('<b>7. Sales performance line chart over the years:</b>', styles['Heading2']))
     elements.append(Spacer(1, 10))
-    elements.append(
-        Paragraph('<img src="sales_performance_line_chart.png" width="400" height="300"/>', styles['BodyText']))
+    elements.append(line_chart_image)
     elements.append(Spacer(1, 20))
 
     doc.build(elements)
@@ -167,3 +179,23 @@ def generate_PDF_report(request):
     return response
 
 
+# this API is used to export the sales data in CSV format
+def export_csv(request):
+    response = HttpResponse(content_type='text/csv')
+    response['Content-Disposition'] = 'attachment; filename="sales_report.csv"'
+
+    writer = csv.writer(response)
+    writer.writerow(['Order ID', 'Order Date', 'Ship Date', 'Ship Mode', 'Customer ID', 'Customer Name',
+                     'Segment', 'Country', 'City', 'State', 'Postal Code', 'Region', 'Product ID',
+                     'Category', 'Sub Category', 'Product Name', 'Sales'])
+
+    sales = SalesModel.objects.all().values_list('order_id', 'order_date', 'ship_date', 'ship_mode', 'customer_id',
+                                                 'customer_name',
+                                                 'segment', 'country', 'city', 'state', 'postal_code', 'region',
+                                                 'product_id',
+                                                 'category', 'sub_category', 'product_name', 'sales')
+
+    for sale in sales:
+        writer.writerow(sale)
+
+    return response

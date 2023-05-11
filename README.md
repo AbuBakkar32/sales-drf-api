@@ -1,6 +1,7 @@
 # sales-drf-api
 
 ## Installation
+#### Before installation make sure you have installed python 3.9 or above version in your system
 
 ```bash
 pip install -r requirements.txt
@@ -72,16 +73,24 @@ DELETE http://127.0.0.1:8000/api/sales/v1/sales/1
 GET http://127.0.0.1:8000/api/sales/v1/sales/1
 ```
 
+----------------------------------------------------------------------------------------------------------------------------
+
 ### Generate PDF file API
 
 ```bash
 GET http://127.0.0.1:8000/api/sales/v1/report/
 ```
+### Generate CSV file API (Additional Feature Used)
+
+```bash
+GET http://127.0.0.1:8000/api/sales/v1/csv/
+```
+
 ### Generate PDF file will be found inside project folder
 ```
 salesproject/report.pdf
 ```
-### Click on [PDF Report](https://drive.google.com/file/d/1oniz4xmhxU-8Ijh8thFMFVbYO1Vt8oWW/view?usp=sharing) to see the report
+### Click on [PDF Report](https://drive.google.com/file/d/1a0mc9kDwsGUMOb9FZ4HUro53h3fjFfZJ/view?usp=sharing) to see the report
 
 ----------------------------------------------------------------------------------------------------------------------------
 
