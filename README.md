@@ -81,3 +81,8 @@ GET http://127.0.0.1:8000/api/sales/v1/report/
 ### Last Two question's answer pie chart and line chart attach below using the Given data
 ![sales_performance_pie_chart.png](salesproject%2Fsales_performance_pie_chart.png)
 ![sales_performance_line_chart.png](salesproject%2Fsales_performance_line_chart.png)
+
+## Contact me
+1. [Linkedin](https://www.linkedin.com/in/abu-bakkar-siddik-17b860196/) <br>
+2. [Github](https://github.com/AbuBakkar32)
+3. [Facebook](https://www.facebook.com/abubakkarswe)
