@@ -71,3 +71,13 @@ DELETE http://127.0.0.1:8000/api/sales/v1/sales/1
 ```bash
 GET http://127.0.0.1:8000/api/sales/v1/sales/1
 ```
+
+### Generate PDF file API
+
+```bash
+GET http://127.0.0.1:8000/api/sales/v1/report/
+```
+
+### Last Two question's answer pie chart and line chart attach below using the Given data
+![sales_performance_pie_chart.png](salesproject%2Fsales_performance_pie_chart.png)
+![sales_performance_line_chart.png](salesproject%2Fsales_performance_line_chart.png)
