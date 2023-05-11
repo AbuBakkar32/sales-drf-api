@@ -1,3 +1,4 @@
+from django.http import HttpResponse
 from django.shortcuts import render
 from rest_framework import generics
 from .models import SalesModel
@@ -159,4 +160,8 @@ def generate_PDF_report(request):
     doc.build(elements)
     pdf = buffer.getvalue()
     buffer.close()
-    return pdf
+
+    response = HttpResponse(content_type='application/pdf')
+    response['Content-Disposition'] = 'attachment; filename="report.pdf"'
+    response.write(pdf)
+    return response
