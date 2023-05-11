@@ -37,7 +37,7 @@ python manage.py test
 ```
 
 ----------------------------------------------------------------------------------------------------------------------------
-### For import the data from csv file to database (Sqlite3). I have to download sqlite3.exe file from https://www.sqlite.org/download.html and then run the following command in cmd
+#### For import the data from csv file to database (Sqlite3). I have to download sqlite3.exe file from https://www.sqlite.org/download.html and then run the following command in cmd
 
 ```bash
 sqlite3 db.sqlite3
