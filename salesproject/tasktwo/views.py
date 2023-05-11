@@ -165,3 +165,5 @@ def generate_PDF_report(request):
     response['Content-Disposition'] = 'attachment; filename="report.pdf"'
     response.write(pdf)
     return response
+
+
