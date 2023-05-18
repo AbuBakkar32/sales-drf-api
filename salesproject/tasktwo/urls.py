@@ -1,5 +1,8 @@
 from django.urls import path, include
-from .views import SalesListCreateView, SalesRetrieveUpdateDestroyView, generate_PDF_report, export_csv
+from .views import SalesListCreateView, \
+    SalesRetrieveUpdateDestroyView, \
+    generate_PDF_report, \
+    export_csv
 
 urlpatterns = [
     path('sales/', SalesListCreateView.as_view(), name='sales-list-create'),
